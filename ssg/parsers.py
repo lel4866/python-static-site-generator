@@ -14,3 +14,7 @@ class Parser:
         raise NotImplemenetdError
 
 
+    def read(self, path: Path):
+        with file = open(path, 'r'):
+            return file.read()
+
