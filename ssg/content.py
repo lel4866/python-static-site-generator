@@ -16,7 +16,7 @@ class Content(Mapping):
         return cls(metadata, content)
 
 
-    def __init__(self, metaddata, content):
+    def __init__(self, metadata, content):
         self.data = metadata
         self.data["content"] = content
 
