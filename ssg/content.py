@@ -11,7 +11,7 @@ Class Content(Mapping):
 
     @classmethod
     def load(cls, string):
-        _, fm, content = __regex.split(string, 2)
+        _, fm, content = cls.__regex.split(string, 2)
         load(fm, Loader=FullLoader)
         return cls(metadata, content)
 
@@ -28,12 +28,12 @@ Class Content(Mapping):
 
     @property
     def type():
-        return self.data["type"]
+        return self.data["type"] if "type" in self.data else None
 
 
     @type.setter
-    def type(self, value):
-        self.data["type"] = value
+    def type(self, type):
+        self.data["type"] = type
 
 
     def __getitem__(key)
@@ -41,7 +41,7 @@ Class Content(Mapping):
 
 
     def __iter__(self):
-        yield from self.data.keys()
+        return self.data.__iter__()
 
 
     def __len__(self):
@@ -51,6 +51,7 @@ Class Content(Mapping):
     def __repr__(self):
         data = {}
         for key, value in self.data.items():
-            value = self.data[key] if key != "content"
+            if key != "content":
+                data[key] = value
         return str(data)
 
