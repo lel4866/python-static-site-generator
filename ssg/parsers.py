@@ -1,5 +1,6 @@
 from typing import List
 from pathlib import Path
+import shutil
 
 
 class Parser:
@@ -18,3 +19,14 @@ class Parser:
         with open(path, "r") as file:
             return file.read()
 
+
+    def write(self, path, dest, content, ext=".html"):
+        full_path = self.dest / path.with_suffix(ext).name
+        with open(full_path, "w") as file:
+            file.write(content)
+
+
+    def copy(self, path, source, dest):
+        shutil.copy2(path, dest / path.relative_to(source)
+
+        
