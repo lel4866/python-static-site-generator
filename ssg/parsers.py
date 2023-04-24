@@ -11,6 +11,6 @@ class Parser:
 
 
     def parse(self, path: Path, source: Path, dest: Path):
-        raise NotImplemenetdError()
+        raise NotImplemenetdError
 
 
